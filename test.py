@@ -5,12 +5,14 @@ import numpy as np
 class MyTestCase(unittest.TestCase):
     def test_border(self):
         env = Snake(7, 3, -10, 10)
+        env.reset()
         env.act(0)
         env.act(0)
         _, _, _, _, done = env.act(0)
         self.assertEqual(done, True)
 
         env = Snake(8, 2, -10, 10)
+        env.reset()
         env.act(1)
         env.act(1)
         env.act(1)
@@ -18,10 +20,12 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(done, True)
 
         env = Snake(7, 5, -10, 10)
+        env.reset()
         _, _, _, _, done = env.act(2)
         self.assertEqual(done, True)
 
         env = Snake(5, 2, -10, 10)
+        env.reset()
         env.act(3)
         env.act(3)
         _, _, _, _, done = env.act(3)
@@ -29,6 +33,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_collision(self):
         env = Snake(7, 5, -10, 10)
+        env.reset()
         env.act(1)
         env.act(2)
         _, _, _, _, done = env.act(3)
@@ -37,6 +42,7 @@ class MyTestCase(unittest.TestCase):
         size = 5
         while size > 4:
             env = Snake(7, 4, -10, 10)
+            env.reset()
             env.act(1)
             env.act(2)
             _, _, _, _, done = env.act(3)
@@ -46,10 +52,12 @@ class MyTestCase(unittest.TestCase):
     def test_sample_apple(self):
         for i in range(25):
             env = Snake(2, 2, -10, -10)
+            env.reset()
             self.assertEqual(np.any(env.board == -1), True)
 
     def test_apple(self):
         env = Snake(2, 2, -10, 10)
+        env.reset()
         env.act(3)
         _, _, _, rwd, _ = env.act(2)
         self.assertEqual(rwd, 10)
