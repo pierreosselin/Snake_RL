@@ -1,3 +1,8 @@
 /venv/
-brouillon.py
-Output1.avi
+debug.py
+*.avi
+/model1/
+/modelFC/
+/modelFNN/
+/output/
+/DQN_CNN/
